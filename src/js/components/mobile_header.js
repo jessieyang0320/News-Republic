@@ -6,6 +6,7 @@ const FormItem = Form.Item;
 const SubMenu = Menu.SubMenu;
 const TabPane = Tabs.TabPane;
 const MenuItemGroup = Menu.ItemGroup;
+import {Router, Route, Link, browserHistory} from 'react-router';
 
 
 class MobileHeader extends React.Component{
@@ -103,8 +104,8 @@ login(){
 				              )}
 											</FormItem>
 											<FormItem label="密码">
-				              {getFieldDecorator('userName')(
-				                <Input placeholder="请输入您的账号"/>
+				              {getFieldDecorator('password')(
+				                <Input placeholder="请输入您的密码"/>
 				              )}
 											</FormItem>
 											<Button type="primary" htmlType="submit">登录</Button>

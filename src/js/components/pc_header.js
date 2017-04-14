@@ -5,6 +5,7 @@ const FormItem = Form.Item;
 const SubMenu = Menu.SubMenu;
 const TabPane = Tabs.TabPane;
 const MenuItemGroup = Menu.ItemGroup;
+import {Router, Route, Link, browserHistory} from 'react-router';
 
 
 class PCHeader extends React.Component {
@@ -73,9 +74,9 @@ class PCHeader extends React.Component {
 			? <Menu.Item key="logout" className="register">
 					<Button type="primary" htmlType="button">{this.state.userNickName}</Button>
 					&nbsp;&nbsp;
-
+          <Link target="_blank">
 						<Button type="dashed" htmlType="button">个人中心</Button>
-
+          </Link>
 					&nbsp;&nbsp;
 					<Button type="ghost" htmlType="button">退出</Button>
 				</Menu.Item>
@@ -129,12 +130,12 @@ class PCHeader extends React.Component {
 										<Form horizontal onSubmit={this.handleSubmit.bind(this)}>
 											<FormItem label="账户">
 											{getFieldDecorator('userName')(
-												<Input placeholder="请输入您的账号"/>
+												<Input placeholder="Username"/>
 											)}
 											</FormItem>
 											<FormItem label="密码">
 											{getFieldDecorator('password')(
-												<Input placeholder="请输入您的密码"/>
+												<Input type="password" placeholder="Password"/>
 											)}
 											</FormItem>
 											<Button type="primary" htmlType="submit">登录</Button>
@@ -145,19 +146,19 @@ class PCHeader extends React.Component {
 									<Form horizontal onSubmit={this.handleSubmit.bind(this)}>
 										<FormItem label="账户">
 										  {getFieldDecorator('r_userName')(
-												<Input placeholder="请输入您的账号"/>
+												<Input placeholder="Username"/>
 											)}
 										</FormItem>
 
 										<FormItem label="密码">
 										  {getFieldDecorator('r_password')(
-											  <Input placeholder="请输入您的密码"/>
+											  <Input placeholder="Password"/>
 										  )}
 										</FormItem>
 
 										<FormItem label="确认密码">
 										  {getFieldDecorator('r_confirmPassword')(
-											  <Input placeholder="请确认您的密码"/>
+											  <Input placeholder="Conform password"/>
 										  )}
 										</FormItem>
 										<Button type="primary" htmlType="submit" >注册</Button>
