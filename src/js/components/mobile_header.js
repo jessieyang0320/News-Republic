@@ -21,7 +21,12 @@ class MobileHeader extends React.Component{
 			userid: 0
 		};
 	};
-
+  componentWillMount(){
+		if(localStorage.userid!=''){
+			this.setState({hasLogined:true});
+			this.setState({userNickName: localStorage.userNickName, userid:localStorage.userid})
+		}
+	}
 	setModalVisible(value)
 	{
 		this.setState({modalVisible: value});
@@ -58,6 +63,8 @@ class MobileHeader extends React.Component{
 		});
 		if(this.state.action =="login"){
 			this.setState({hasLogined:true});
+			localStorage.userNickName = json.NickUserName;
+			localStorage.userid = json.UserId;
 		}
 		message.success("请求成功！");
 		this.setModalVisible(false);
@@ -80,7 +87,7 @@ login(){
 	render(){
 		let {getFieldDecorator} = this.props.form;
 		const userShow = this.state.hasLogined ?
-				<Link>
+				<Link target="_blank">
 					<Icon type="inbox"/>
 				</Link>
 				:
@@ -95,44 +102,48 @@ login(){
 		    </header>
 
 				<Modal title="用户中心" wrapClassName="vertical-center-modal" visible={this.state.modalVisible} onCancel= {()=>this.setModalVisible(false)} onOk={() => this.setModalVisible(false)} okText = "关闭">
-									<Tabs type="card" onChange={this.callback.bind(this)}>
-									<TabPane tab="登录" key="1">
-										<Form horizontal onSubmit={this.handleSubmit.bind(this)}>
-											<FormItem label="账户">
-				              {getFieldDecorator('userName')(
-				                <Input placeholder="请输入您的账号"/>
-				              )}
-											</FormItem>
-											<FormItem label="密码">
-				              {getFieldDecorator('password')(
-				                <Input placeholder="请输入您的密码"/>
-				              )}
-											</FormItem>
-											<Button type="primary" htmlType="submit">登录</Button>
-										</Form>
-									</TabPane>
-										<TabPane tab="注册" key="2">
-											<Form horizontal onSubmit={this.handleSubmit.bind(this)}>
-												<FormItem label="账户">
-				                {getFieldDecorator('userName')(
-				                  <Input placeholder="请输入您的账号"/>
-				                )}
-												</FormItem>
-												<FormItem label="密码">
-				                {getFieldDecorator('userName')(
-				                  <Input placeholder="请输入您的账号"/>
-				                )}
-												</FormItem>
-												<FormItem label="确认密码">
-				                {getFieldDecorator('userName')(
-				                  <Input placeholder="请输入您的账号"/>
-				                )}
-													</FormItem>
-												<Button type="primary" htmlType="submit" >注册</Button>
-											</Form>
-										</TabPane>
-									</Tabs>
-								</Modal>
+					<Tabs type="card" onChange={this.callback.bind(this)}>
+
+							<TabPane tab="登录" key="1">
+								<Form horizontal onSubmit={this.handleSubmit.bind(this)}>
+									<FormItem label="账户">
+									{getFieldDecorator('userName')(
+										<Input placeholder="Username"/>
+									)}
+									</FormItem>
+									<FormItem label="密码">
+									{getFieldDecorator('password')(
+										<Input type="password" placeholder="Password"/>
+									)}
+									</FormItem>
+									<Button type="primary" htmlType="submit">登录</Button>
+								</Form>
+							</TabPane>
+
+						<TabPane tab="注册" key="2">
+							<Form horizontal onSubmit={this.handleSubmit.bind(this)}>
+								<FormItem label="账户">
+									{getFieldDecorator('r_userName')(
+										<Input placeholder="Username"/>
+									)}
+								</FormItem>
+
+								<FormItem label="密码">
+									{getFieldDecorator('r_password')(
+										<Input placeholder="Password"/>
+									)}
+								</FormItem>
+
+								<FormItem label="确认密码">
+									{getFieldDecorator('r_confirmPassword')(
+										<Input placeholder="Conform password"/>
+									)}
+								</FormItem>
+								<Button type="primary" htmlType="submit" >注册</Button>
+							</Form>
+						</TabPane>
+					</Tabs>
+				</Modal>
 		  </div>
 
 			);

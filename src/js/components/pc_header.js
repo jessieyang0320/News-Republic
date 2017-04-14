@@ -21,6 +21,13 @@ class PCHeader extends React.Component {
 		};
 	};
 
+  componentWillMount(){
+		if(localStorage.userid!=''){
+			this.setState({hasLogined:true});
+			this.setState({userNickName: localStorage.userNickName,userid:localStorage.UserId})
+		}
+	}
+
 	setModalVisible(value)
 	{
 		this.setState({modalVisible: value});
@@ -58,7 +65,8 @@ class PCHeader extends React.Component {
 		fetch("http://newsapi.gugujiankong.com/Handler.ashx?action="+this.state.action+"&username="+formData.userName+"&password="+formData.password+"&r_userName="+formData.r_userName+"&r_password="+formData.r_password+"&r_confirmPassword="+formData.r_confirmPassword,myFetchOptions).
 		then(response=>response.json()).then(json=>{
 			this.setState({userNickName:json.NickUserName,userid:json.UserId});
-
+      localStorage.userNickName = json.NickUserName;
+			localStorage.userid = json.UserId;
 		});
 		if(this.state.action=="login"){
 			this.setState({hasLogined:true});
@@ -66,6 +74,12 @@ class PCHeader extends React.Component {
 		message.success("请求成功！");
 		this.setModalVisible(false);
 	};
+
+	logout(){
+		localStorage.userNickName = '';
+		localStorage.userid = '';
+		this.setState({hasLogined:false})
+	}
 
 
 	render() {
@@ -78,7 +92,7 @@ class PCHeader extends React.Component {
 						<Button type="dashed" htmlType="button">个人中心</Button>
           </Link>
 					&nbsp;&nbsp;
-					<Button type="ghost" htmlType="button">退出</Button>
+					<Button type="ghost" htmlType="button" onClick={this.logout.bind(this)}>退出</Button>
 				</Menu.Item>
 			: <Menu.Item key="register" className="register">
 				<Icon type="appstore"/>注册/登录
