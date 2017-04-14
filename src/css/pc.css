@@ -17,6 +17,15 @@
 	text-align: center;
 }
 
-.register{
-	float: right;
+.container{
+	padding-top: 10px;
+}
+.leftcontainer{
+	width:400px;
+	float:left;
+
+}
+.carousel{
+	width:400px;
+	float:left;
 }
