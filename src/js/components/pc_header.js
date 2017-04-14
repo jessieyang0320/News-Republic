@@ -1,20 +1,12 @@
 import React from 'react';
 import {Row, Col} from 'antd';
-import {
-	Menu,
-	Icon,
-	Tabs,
-	message,
-	Form,
-	Input,
-	Button,
-	CheckBox,
-	Modal
-} from 'antd';
+import {Menu,Icon,Tabs,message,Form,Input,Button,CheckBox,Modal} from 'antd';
 const FormItem = Form.Item;
 const SubMenu = Menu.SubMenu;
 const TabPane = Tabs.TabPane;
 const MenuItemGroup = Menu.ItemGroup;
+
+
 class PCHeader extends React.Component {
 	constructor() {
 		super();
@@ -34,7 +26,8 @@ class PCHeader extends React.Component {
 	};
 
 	handleClick(e) {
-		if (e.key = "register") {
+		console.log(e.key);
+		if (e.key == "register") {
 			this.setState({current: 'register'});
 			this.setModalVisible(true);
 		} else {
@@ -64,7 +57,7 @@ class PCHeader extends React.Component {
 
 
 	render() {
-		let {getFieldProps} = this.props.form;
+		let {getFieldDecorator} = this.props.form;
 		const userShow = this.state.hasLogined
 			? <Menu.Item key="logout" className="register">
 					<Button type="primary" htmlType="button">{this.state.userNickName}</Button>
@@ -78,6 +71,8 @@ class PCHeader extends React.Component {
 			: <Menu.Item key="register" className="register">
 				<Icon type="appstore"/>注册/登录
 			</Menu.Item>;
+
+
 		return (
 			<header>
 				<Row>
@@ -121,13 +116,21 @@ class PCHeader extends React.Component {
 								<TabPane tab="注册" key="2">
 									<Form horizontal onSubmit={this.handleSubmit.bind(this)}>
 										<FormItem label="账户">
-											<Input placeholder="请输入您的账号" {...getFieldProps('r_userName')}/>
+										  {getFieldDecorator('r_userName')(
+												<Input placeholder="请输入您的账号"/>
+											)}；
 										</FormItem>
+
 										<FormItem label="密码">
-											<Input type="password" placeholder="请输入您的密码" {...getFieldProps('r_password')}/>
+										  {getFieldDecorator('r_password')(
+											  <Input placeholder="请输入您的密码"/>
+										  )}；
 										</FormItem>
+
 										<FormItem label="确认密码">
-											<Input type="password" placeholder="请再次输入您的密码" {...getFieldProps('r_confirmPassword')}/>
+										  {getFieldDecorator('r_confirmPassword')(
+											  <Input placeholder="请确认您的密码"/>
+										  )}；
 										</FormItem>
 										<Button type="primary" htmlType="submit" >注册</Button>
 									</Form>
