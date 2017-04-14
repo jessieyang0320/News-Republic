@@ -6,6 +6,7 @@ const FormItem = Form.Item;
 const SubMenu = Menu.SubMenu;
 const TabPane = Tabs.TabPane;
 const MenuItemGroup = Menu.ItemGroup;
+import {Router, Route, Link, browserHistory} from 'react-router';
 
 
 class MobileHeader extends React.Component{
@@ -20,7 +21,12 @@ class MobileHeader extends React.Component{
 			userid: 0
 		};
 	};
-
+  componentWillMount(){
+		if(localStorage.userid!=''){
+			this.setState({hasLogined:true});
+			this.setState({userNickName: localStorage.userNickName, userid:localStorage.userid})
+		}
+	}
 	setModalVisible(value)
 	{
 		this.setState({modalVisible: value});
@@ -47,14 +53,30 @@ class MobileHeader extends React.Component{
 		};
 		var formData= this.props.form.getFieldsValue();
 		console.log(formData);
-		fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=register&username=userName&password=password&r_userName="+formData.r_userName+"&r_password="+formData.r_password+"&r_confirmPassword="+formData.r_confirmPassword,myFetchOptions).
+		fetch("http://newsapi.gugujiankong.com/Handler.ashx?action="+this.state.action
+		+"&username="+formData.userName+"&password="+formData.password
+		+"&r_userName="+formData.r_userName+"&r_password="+formData.r_password
+		+"&r_confirmPassword="+formData.r_confirmPassword,myFetchOptions).
 		then(response=>response.json()).then(json=>{
 			this.setState({userNickName:json.NickUserName,userid:json.UserId});
 
 		});
+		if(this.state.action =="login"){
+			this.setState({hasLogined:true});
+			localStorage.userNickName = json.NickUserName;
+			localStorage.userid = json.UserId;
+		}
 		message.success("请求成功！");
 		this.setModalVisible(false);
 	};
+
+callback(key){
+	if(key=="1"){
+		this.setState({action: 'login'});
+	}else if(key=="2"){
+		this.setState({action: 'register'});
+	};
+}
 
 
 
@@ -65,7 +87,7 @@ login(){
 	render(){
 		let {getFieldDecorator} = this.props.form;
 		const userShow = this.state.hasLogined ?
-				<Link>
+				<Link target="_blank">
 					<Icon type="inbox"/>
 				</Link>
 				:
@@ -80,25 +102,42 @@ login(){
 		    </header>
 
 				<Modal title="用户中心" wrapClassName="vertical-center-modal" visible={this.state.modalVisible} onCancel= {()=>this.setModalVisible(false)} onOk={() => this.setModalVisible(false)} okText = "关闭">
-					<Tabs type="card">
+					<Tabs type="card" onChange={this.callback.bind(this)}>
+
+							<TabPane tab="登录" key="1">
+								<Form horizontal onSubmit={this.handleSubmit.bind(this)}>
+									<FormItem label="账户">
+									{getFieldDecorator('userName')(
+										<Input placeholder="Username"/>
+									)}
+									</FormItem>
+									<FormItem label="密码">
+									{getFieldDecorator('password')(
+										<Input type="password" placeholder="Password"/>
+									)}
+									</FormItem>
+									<Button type="primary" htmlType="submit">登录</Button>
+								</Form>
+							</TabPane>
+
 						<TabPane tab="注册" key="2">
 							<Form horizontal onSubmit={this.handleSubmit.bind(this)}>
 								<FormItem label="账户">
 									{getFieldDecorator('r_userName')(
-										<Input placeholder="请输入您的账号"/>
-									)}；
+										<Input placeholder="Username"/>
+									)}
 								</FormItem>
 
 								<FormItem label="密码">
 									{getFieldDecorator('r_password')(
-										<Input placeholder="请输入您的密码"/>
-									)}；
+										<Input placeholder="Password"/>
+									)}
 								</FormItem>
 
 								<FormItem label="确认密码">
 									{getFieldDecorator('r_confirmPassword')(
-										<Input placeholder="请确认您的密码"/>
-									)}；
+										<Input placeholder="Conform password"/>
+									)}
 								</FormItem>
 								<Button type="primary" htmlType="submit" >注册</Button>
 							</Form>
