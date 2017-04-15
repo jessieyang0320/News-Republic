@@ -1,6 +1,6 @@
 import React from 'react';
 import {Row, Col} from 'antd';
-import {Form,Input,Button,Card} from 'antd';
+import {Form,Input,Button,Card,notification} from 'antd';
 const FormItem = Form.Item;
 import {Router, Route, Link, browserHistory} from 'react-router';
 
@@ -35,6 +35,19 @@ handleSubmit(e){
 
 }
 
+addUserCollection(){
+  var myFetchOptions = {
+    method: 'GET'
+  };
+  fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=uc&userid="
+  +localStorage.userid+"&uniquekey="+this.props.uniquekey,myFetchOptions)
+			.then(response=>response.json())
+			.then(json=>{
+				//收藏成功以后进行一下全局的提醒
+        notification['success']({message: 'ReactNews提醒', description: '收藏此文章成功'});
+			});
+}
+
   render(){
 
     let {getFieldDecorator} = this.props.form;
@@ -60,6 +73,7 @@ handleSubmit(e){
                     )}
   							</FormItem>
   							<Button type="primary" htmlType="submit">Submit Comments</Button>
+                <Button type="primary" htmlType="button" onClick={this.addUserCollection.bind(this)}>收藏</Button>
 						</Form>
           </Col>
         </Row>
