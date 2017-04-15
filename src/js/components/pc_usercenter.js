@@ -2,7 +2,7 @@ import React from 'react';
 import {Row, Col} from 'antd';
 import PCHeader from './pc_header';
 import PCFooter from './pc_footer';
-import {Menu,Icon,Tabs,message,Form,Input,Button,Upload,Modal} from 'antd';
+import {Menu,Icon,Tabs,message,Form,Input,Button,Upload,Modal,Card} from 'antd';
 const FormItem = Form.Item;
 const SubMenu = Menu.SubMenu;
 const TabPane = Tabs.TabPane;
@@ -13,9 +13,21 @@ export default class PCUserCenter extends React.Component{
   constructor(){
     super();
     this.state={
+      usercollection:'',
       previewImage: '',
       previewVisible: false
     }
+  }
+
+  componentDidMount(){
+    var myFetchOptions = {
+      method: 'GET'
+    };
+    fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getuc&userid="
+    + localStorage.userid, myFetchOptions)
+    .then(response=>response.json())
+    .then(json=>{this.setState({usercollection:json})
+  });
   }
 
 
@@ -39,6 +51,18 @@ export default class PCUserCenter extends React.Component{
     		this.setState({previewImage:file.url,previewVisible:true});
     	}
    };
+
+   const {usercollection} = this.state;
+   const usercollectionList = usercollection.length ?
+   usercollection.map((uc,index)=>(
+       <Card key={index} title={uc.uniquekey} extra={<a target="_blank" href={`/#/details/${uc.uniquekey}`}>查看</a>}>
+         <p>{uc.Title}</p>
+       </Card>
+   ))
+   :
+   '您还没有收藏任何的新闻，快去收藏一些新闻吧。';
+
+
     return(
       <div>
         <PCHeader/>
@@ -47,11 +71,18 @@ export default class PCUserCenter extends React.Component{
           <Col span={20}>
               <Tabs>
                 <TabPane tab="我的收藏列表" key="1">
+                    <Row>
+                        <Col span={24}>
+                            {usercollectionList}
+                        </Col>
+
+                    </Row>
+
                 </TabPane>
                 <TabPane tab="我的评论列表" key="2">
                 </TabPane>
                 <TabPane tab="头像设置" key="3">
-                    <div class="clearfix">
+                    <div className="clearfix">
     									<Upload {...props}>
     										<Icon type="plus"/>
     										<div className="ant-upload-text">上传照片</div>
