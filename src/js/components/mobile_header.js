@@ -46,7 +46,7 @@ class MobileHeader extends React.Component{
 
 	handleSubmit(e)
 	{
-		//页面开始向 API 进行提交数据
+		//make API Requests
 		e.preventDefault();
 		var myFetchOptions = {
 			method: 'GET'
@@ -101,45 +101,45 @@ login(){
 					{userShow}
 		    </header>
 
-				<Modal title="用户中心" wrapClassName="vertical-center-modal" visible={this.state.modalVisible} onCancel= {()=>this.setModalVisible(false)} onOk={() => this.setModalVisible(false)} okText = "关闭">
+				<Modal title="Account" wrapClassName="vertical-center-modal" visible={this.state.modalVisible} onCancel= {()=>this.setModalVisible(false)} onOk={() => this.setModalVisible(false)} okText = "关闭">
 					<Tabs type="card" onChange={this.callback.bind(this)}>
 
-							<TabPane tab="登录" key="1">
+							<TabPane tab="Login" key="1">
 								<Form horizontal onSubmit={this.handleSubmit.bind(this)}>
-									<FormItem label="账户">
+									<FormItem label="Username:">
 									{getFieldDecorator('userName')(
 										<Input placeholder="Username"/>
 									)}
 									</FormItem>
-									<FormItem label="密码">
+									<FormItem label="Password:">
 									{getFieldDecorator('password')(
 										<Input type="password" placeholder="Password"/>
 									)}
 									</FormItem>
-									<Button type="primary" htmlType="submit">登录</Button>
+									<Button type="primary" htmlType="submit">Login</Button>
 								</Form>
 							</TabPane>
 
-						<TabPane tab="注册" key="2">
+						<TabPane tab="Register" key="2">
 							<Form horizontal onSubmit={this.handleSubmit.bind(this)}>
-								<FormItem label="账户">
+								<FormItem label="Username:">
 									{getFieldDecorator('r_userName')(
 										<Input placeholder="Username"/>
 									)}
 								</FormItem>
 
-								<FormItem label="密码">
+								<FormItem label="Password:">
 									{getFieldDecorator('r_password')(
 										<Input placeholder="Password"/>
 									)}
 								</FormItem>
 
-								<FormItem label="确认密码">
+								<FormItem label="Confirm Passwrod:">
 									{getFieldDecorator('r_confirmPassword')(
 										<Input placeholder="Conform password"/>
 									)}
 								</FormItem>
-								<Button type="primary" htmlType="submit" >注册</Button>
+								<Button type="primary" htmlType="submit" >Sign Up</Button>
 							</Form>
 						</TabPane>
 					</Tabs>

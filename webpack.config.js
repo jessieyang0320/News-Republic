@@ -16,10 +16,14 @@ module.exports = {
           presets: ['react', 'es2015']
         }
       },
-      // use ant-desgin, no need to add a long tail to style class name 
+      // use ant-desgin, no need to add a long tail to style class name
       {
         test: /\.css$/,
         loader: 'style-loader!css-loader'
+      },
+      {
+        test: /\.less$/,
+        loader: "style-loader!css-loader!less-loader"
       }
     ]
   },
