@@ -17,10 +17,13 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.0",
     "fetch": "^1.1.0",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.3",
     "react": "^15.5.3",
     "react-dom": "^15.5.3",
     "react-responsive": "^1.2.7",
     "react-router": "^4.1.1",
+    "react-touch-loader": "^1.1.0",
     "style-loader": "^0.16.1",
     "webpack": "^2.3.3",
     "webpack-dev-server": "^2.4.2"

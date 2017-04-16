@@ -11,4 +11,7 @@ add rules
 
 6. iconfinder
 
-7. 
+7. Best Practices for Speeding Up Your Web Site https://developer.yahoo.com/performance/rules.html
+8. YSLow chrome plugin
+
+9.react-touch-loader
