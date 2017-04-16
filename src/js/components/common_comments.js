@@ -44,7 +44,7 @@ addUserCollection(){
 			.then(response=>response.json())
 			.then(json=>{
 				//收藏成功以后进行一下全局的提醒
-        notification['success']({message: 'ReactNews提醒', description: '收藏此文章成功'});
+        notification['success']({message: 'ReactNews提醒', description: 'BookMarked!!!'});
 			});
 }
 
@@ -54,7 +54,7 @@ addUserCollection(){
     const {comments} = this.state;
     const commentList = comments.length?
     comments.map((comment,index)=>(
-        <Card key={index} title={comment.UserName} extra={<a href="#">发布于{comment.datetime}</a>}>
+        <Card key={index} title={comment.UserName} extra={<a href="#">at{comment.datetime}</a>}>
             <p>{comment.Comments}</p>
         </Card>
     ))
@@ -73,7 +73,7 @@ addUserCollection(){
                     )}
   							</FormItem>
   							<Button type="primary" htmlType="submit">Submit Comments</Button>
-                <Button type="primary" htmlType="button" onClick={this.addUserCollection.bind(this)}>收藏</Button>
+                <Button type="primary" htmlType="button" onClick={this.addUserCollection.bind(this)}>BookMark</Button>
 						</Form>
           </Col>
         </Row>

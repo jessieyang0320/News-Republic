@@ -71,7 +71,7 @@ class PCHeader extends React.Component {
 		if(this.state.action=="login"){
 			this.setState({hasLogined:true});
 		}
-		message.success("请求成功！");
+		message.success("succesful");
 		this.setModalVisible(false);
 	};
 
@@ -89,13 +89,13 @@ class PCHeader extends React.Component {
 					<Button type="primary" htmlType="button">{this.state.userNickName}</Button>
 
           <Link to={'/usercenter'} target="_blank">
-						<Button type="dashed" htmlType="button">个人中心</Button>
+						<Button type="dashed" htmlType="button">Account</Button>
           </Link>
 
-					<Button type="ghost" htmlType="button" onClick={this.logout.bind(this)}>退出</Button>
+					<Button type="ghost" htmlType="button" onClick={this.logout.bind(this)}>Logout</Button>
 				</Menu.Item>
 			: <Menu.Item key="register" className="register">
-				<Icon type="appstore"/>注册/登录
+				<Icon type="appstore"/>Register/Login
 			</Menu.Item>;
 
 
@@ -112,70 +112,70 @@ class PCHeader extends React.Component {
 					<Col span={16}>
 						<Menu mode="horizontal" onClick={this.handleClick.bind(this)} selectedKeys={[this.state.current]}>
 							<Menu.Item key="top">
-								<Icon type="appstore"/>头条
+								<Icon type="appstore"/>TOP
 							</Menu.Item>
 							<Menu.Item key="shehui">
-								<Icon type="appstore"/>社会
+								<Icon type="appstore"/>Society
 							</Menu.Item>
 							<Menu.Item key="guonei">
-								<Icon type="appstore"/>国内
+								<Icon type="appstore"/>Domestic
 							</Menu.Item>
 							<Menu.Item key="guoji">
-								<Icon type="appstore"/>国际
+								<Icon type="appstore"/>Global
 							</Menu.Item>
 							<Menu.Item key="yule">
-								<Icon type="appstore"/>娱乐
+								<Icon type="appstore"/>Entertainment
 							</Menu.Item>
 							<Menu.Item key="tiyu">
-								<Icon type="appstore"/>体育
+								<Icon type="appstore"/>Sports
 							</Menu.Item>
 							<Menu.Item key="keji">
-								<Icon type="appstore"/>科技
+								<Icon type="appstore"/>Technology
 							</Menu.Item>
 							<Menu.Item key="shishang">
-								<Icon type="appstore"/>时尚
+								<Icon type="appstore"/>Fashion
 							</Menu.Item>
 							{userShow}
 						</Menu>
-						<Modal title="用户中心" wrapClassName="vertical-center-modal" visible={this.state.modalVisible} onCancel= {()=>this.setModalVisible(false)} onOk={() => this.setModalVisible(false)} okText = "关闭">
+						<Modal title="Account" wrapClassName="vertical-center-modal" visible={this.state.modalVisible} onCancel= {()=>this.setModalVisible(false)} cancelText = "Cancel" onOk={() => this.setModalVisible(false)} okText = "Close">
 							<Tabs type="card" onChange={this.callback.bind(this)}>
 
-									<TabPane tab="登录" key="1">
+									<TabPane tab="login" key="1">
 										<Form horizontal onSubmit={this.handleSubmit.bind(this)}>
-											<FormItem label="账户">
+											<FormItem label="Username:">
 											{getFieldDecorator('userName')(
 												<Input placeholder="Username"/>
 											)}
 											</FormItem>
-											<FormItem label="密码">
+											<FormItem label="Password:">
 											{getFieldDecorator('password')(
 												<Input type="password" placeholder="Password"/>
 											)}
 											</FormItem>
-											<Button type="primary" htmlType="submit">登录</Button>
+											<Button type="primary" htmlType="submit">Login</Button>
 										</Form>
 									</TabPane>
 
-								<TabPane tab="注册" key="2">
+								<TabPane tab="register" key="2">
 									<Form horizontal onSubmit={this.handleSubmit.bind(this)}>
-										<FormItem label="账户">
+										<FormItem label="Username:">
 										  {getFieldDecorator('r_userName')(
 												<Input placeholder="Username"/>
 											)}
 										</FormItem>
 
-										<FormItem label="密码">
+										<FormItem label="Password:">
 										  {getFieldDecorator('r_password')(
 											  <Input placeholder="Password"/>
 										  )}
 										</FormItem>
 
-										<FormItem label="确认密码">
+										<FormItem label="Conform Password:">
 										  {getFieldDecorator('r_confirmPassword')(
 											  <Input placeholder="Conform password"/>
 										  )}
 										</FormItem>
-										<Button type="primary" htmlType="submit" >注册</Button>
+										<Button type="primary" htmlType="submit" >Sign Up</Button>
 									</Form>
 								</TabPane>
 							</Tabs>
