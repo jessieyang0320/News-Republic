@@ -30,8 +30,9 @@ ____
 ____
 ## To do later: 
 
-1. add input verification and rules for user authentication and forms
-2. use THe New York Time API for more content 
-3. mroe styling 
+1. Deploy this app on heroku
+2. add input verification and rules for user authentication and forms
+3. use THe New York Time API for more content 
+4. mroe styling 
 
 
