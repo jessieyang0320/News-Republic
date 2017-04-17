@@ -62,6 +62,7 @@
 }
 
 .carousel {
+	  padding-top: 34px;
     width: 400px;
     float: left;
 }
@@ -165,6 +166,7 @@ iframe {
 .ant-menu-horizontal > .ant-menu-item > a, .ant-menu-horizontal > .ant-menu-submenu > a
 {
   display: inline-block !important;
+
 }
 
 
