@@ -86,10 +86,10 @@ class PCHeader extends React.Component {
 		let {getFieldDecorator} = this.props.form;
 		const userShow = this.state.hasLogined
 			? <Menu.Item key="logout" className="register">
-					<Button type="primary" htmlType="button">{this.state.userNickName}</Button>
+					<Button type="dashed" htmlType="button">Hi,{this.state.userNickName}</Button>
 
           <Link to={'/usercenter'} target="_blank">
-						<Button type="dashed" htmlType="button">Account</Button>
+						<Button type="primary" htmlType="button">Account</Button>
           </Link>
 
 					<Button type="ghost" htmlType="button" onClick={this.logout.bind(this)}>Logout</Button>
@@ -114,12 +114,7 @@ class PCHeader extends React.Component {
 							<Menu.Item key="top">
 								<Icon type="appstore"/>TOP
 							</Menu.Item>
-							<Menu.Item key="shehui">
-								<Icon type="appstore"/>Society
-							</Menu.Item>
-							<Menu.Item key="guonei">
-								<Icon type="appstore"/>Domestic
-							</Menu.Item>
+
 							<Menu.Item key="guoji">
 								<Icon type="appstore"/>Global
 							</Menu.Item>

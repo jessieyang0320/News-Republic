@@ -10,14 +10,13 @@ export default class PCNewsImageBlock extends React.Component{
       news:''
     }
   }
+
   componentWillMount(){
     var myFetchOptions = {
       method: 'GET'
     }
-    fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type="
-    +this.props.type+"&count="
-    +this.props.count, myFetchOptions)
-    .then(response=>response.json()).then(json=> this.setState({news:json}))
+    fetch("https://newsapi.org/v1/articles?source=abc-news-au&sortBy="+this.props.type+"&apiKey=a0410e7014814630a161eba1825b60a4", myFetchOptions)
+    .then(response=>response.json()).then(json=> this.setState({news:json.articles}))
   }
 
   render(){
@@ -35,19 +34,19 @@ export default class PCNewsImageBlock extends React.Component{
     }
 
     const {news} = this.state;
-
 		const newsList = news.length
 			? news.map((newsItem, index) => (
+
 				<div key={index} className="imageblock">
-					<Link to={`details/${newsItem.uniquekey}`} target="_blank">
+
             <div className="custom-image">
-              <img alt="" style={styleImage} src={newsItem.thumbnail_pic_s}/>
+              <img alt="" style={styleImage} src={newsItem.urlToImage}/>
             </div>
             <div className="custom-card">
-              <h3 style={styleH3}>{newsItem.title}</h3>
-              <p>{newsItem.author_name}</p>
+              <h3 style={styleH3}><a href={newsItem.url} target="_blank">{newsItem.title}</a></h3>
+
             </div>
-					</Link>
+
 				</div>
 			))
 			: 'No news loaded';

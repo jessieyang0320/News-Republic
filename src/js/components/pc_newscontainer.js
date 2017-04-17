@@ -22,6 +22,7 @@ export default class PCNewsContainer extends React.Component{
           <Col span={20} className="container">
             <div className="leftContainer">
               <div className="carousel">
+
                 <Carousel {...settings}>
                   <div><img src="./src/images/carousel_1.jpg"/></div>
                   <div><img src="./src/images/carousel_2.jpg"/></div>
@@ -31,17 +32,23 @@ export default class PCNewsContainer extends React.Component{
               </div>
 
               <div>
-                <PCNewsImageBlock count={6} type="guoji" width="400px" cartTitle="国际头条" imageWidth="112px"/>
+                <PCNewsImageBlock count={6} type="top" width="400px" cartTitle="ABC News" imageWidth="112px"/>
               </div>
+              <div>
+  							<PCNewsImageBlock count={8} type="top" width="400px" cartTitle="Domestic" imageWidth="112px"/>
+              </div>
+              <div>
+  							<PCNewsImageBlock count={16} type="top" width="400px" cartTitle="Entertainment" imageWidth="112px"/>
+  						</div>
             </div>
 
             <Tabs className="tabs_news">
               <TabPane tab="TOP" key="1">
-                <PCNewsBlock count={22} type="top" width="100%" bordered="false"/>
+                <PCNewsBlock count={40} type="top" width="100%" bordered="false"/>
               </TabPane>
 
               <TabPane tab="Global" key="2">
-                <PCNewsBlock count={22} type="guoji" width="100%" bordered="false"/>
+                <PCNewsBlock count={40} type="guoji" width="100%" bordered="false"/>
               </TabPane>
             </Tabs>
 
@@ -52,9 +59,11 @@ export default class PCNewsContainer extends React.Component{
 						</Tabs>
 
             <div>
-							<PCNewsImageBlock count={8} type="guonei" width="100%" cartTitle="Domestic" imageWidth="132px"/>
-							<PCNewsImageBlock count={16} type="yule" width="100%" cartTitle="Entertainment" imageWidth="132px"/>
-						</div>
+                <PCNewsImageBlock count={8} type="top" width="100%" cartTitle="Domestic" imageWidth="132px"/>
+                <PCNewsImageBlock count={8} type="top" width="100%" cartTitle="Domestic" imageWidth="132px"/>
+            </div>
+
+
 
 
 
