@@ -44,11 +44,19 @@ export default class PCNewsContainer extends React.Component{
 
             <Tabs className="tabs_news">
               <TabPane tab="TOP" key="1">
-                <PCNewsBlock count={40} type="top" width="100%" bordered="false"/>
+                <PCNewsBlock count={40} type="home" width="100%" bordered="false"/>
               </TabPane>
 
-              <TabPane tab="Global" key="2">
-                <PCNewsBlock count={40} type="guoji" width="100%" bordered="false"/>
+              <TabPane tab="World" key="2">
+                <PCNewsBlock count={40} type="world" width="100%" bordered="false"/>
+              </TabPane>
+
+              <TabPane tab="Health" key="3">
+                <PCNewsBlock count={40} type="health" width="100%" bordered="false"/>
+              </TabPane>
+
+              <TabPane tab="Arts" key="4">
+                <PCNewsBlock count={40} type="arts" width="100%" bordered="false"/>
               </TabPane>
             </Tabs>
 
