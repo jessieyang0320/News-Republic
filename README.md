@@ -1,7 +1,10 @@
 # News-Republic
 
 
-A news collection application that shows top news/videos from different news websites/different topics. Users can signip/login to bookmark articles, leave comments, and change profile. This app uses React, Node.js and Webpack.   
+A news collection application that shows top news/videos from different news websites/different topics. Users can signip/login to bookmark articles, leave comments, and change profile. This app uses React, Node.js and Webpack.
+
+
+![alt text](https://github.com/jessieyang0320/News-Republic/blob/master/src/images/news-republic.png "News Republic")
 ____
 
 ## Tech Stacks: 
