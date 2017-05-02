@@ -1,15 +1,20 @@
-var http = require("http"),
-    port = process.env.PORT || 1881; 
-    fs = require('fs'); 
+var express = require('express');
+var app = express();
 
-var html = fs.readFileSync('index.html');
- 
-var server = http.createServer(function(request,response){  
-    response.writeHeader(200, {"Content-Type": "text/plain"});  
-    
-    response.end(html);  
-    response.render(html)
+app.set('port', (process.env.PORT || 5000));
+
+// app.use(express.static(__dirname + '/public'));
+
+// views is directory for all template files
+// app.set('views', __dirname + '/views');
+// app.set('view engine', 'ejs');
+
+app.get('/', function(request, response) {
+  response.render('index');
 });
- 
-server.listen(port);  
-console.log("Server Running on "+port+".\nLaunch http://localhost:"+port);
+
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
+
+
