@@ -2,12 +2,15 @@
   "name": "05-01",
   "version": "1.0.0",
   "description": "",
-  "main": "root.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "6.9.4"
+  },
   "dependencies": {
     "antd": "^2.9.1",
     "babel-core": "^6.24.1",
