@@ -1,4 +1,5 @@
 import React from 'react';
+import {Router, Route, Link, browserHistory} from 'react-router';
 import {Row, Col} from 'antd';
 import PCHeader from './pc_header';
 import PCFooter from './pc_footer';
@@ -7,7 +8,7 @@ const FormItem = Form.Item;
 const SubMenu = Menu.SubMenu;
 const TabPane = Tabs.TabPane;
 const MenuItemGroup = Menu.ItemGroup;
-import {Router, Route, Link, browserHistory} from 'react-router';
+
 
 export default class PCUserCenter extends React.Component{
   constructor(){
