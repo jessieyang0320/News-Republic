@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card,Tabs} from 'antd';
-import {Router, Route, Link, browserHistory} from 'react-router';
+import {Link} from 'react-router-dom';
 const TabPane = Tabs.TabPane;
 
 export default class PCNewsBlock extends React.Component{

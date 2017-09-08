@@ -2,7 +2,7 @@ import React from 'react';
 import {Row, Col} from 'antd';
 import {Form,Input,Button,Card,notification} from 'antd';
 const FormItem = Form.Item;
-import {Router, Route, Link, browserHistory} from 'react-router';
+import {Link} from 'react-router-dom';
 
 class CommonComments extends React.Component{
   constructor(){
