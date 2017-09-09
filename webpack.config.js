@@ -3,6 +3,9 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
+  devServer: {
+    historyApiFallback:true
+  },
   context: path.join(__dirname),
   // devtool: debug ? "inline-sourcemap" : null,
   entry: "./src/js/root.js",

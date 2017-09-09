@@ -97,7 +97,7 @@ login(){
 		return(
 		  <div id="mobileheader">
 		    <header>
-		      <img src="./src/images/logo.png" alt="logo"/>
+		      <img src="/src/images/logo.png" alt="logo"/>
 		      <span>News Republic</span>
 					{userShow}
 		    </header>

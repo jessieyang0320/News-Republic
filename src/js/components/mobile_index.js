@@ -24,10 +24,10 @@ export default class MobileIndex extends React.Component{
 				  <TabPane tab="Top" key="1">
 					<div className="carousel">
 						<Carousel {...settings}>
-							<div><img src="./src/images/carousel_1.jpg"/></div>
-							<div><img src="./src/images/carousel_2.jpg"/></div>
-							<div><img src="./src/images/carousel_3.jpg"/></div>
-							<div><img src="./src/images/carousel_4.jpg"/></div>
+							<div><img src="/src/images/carousel_1.jpg"/></div>
+							<div><img src="/src/images/carousel_2.jpg"/></div>
+							<div><img src="/src/images/carousel_3.jpg"/></div>
+							<div><img src="/src/images/carousel_4.jpg"/></div>
 						</Carousel>
 					</div>
 				  	<MobileList count={20} type="top"/>
